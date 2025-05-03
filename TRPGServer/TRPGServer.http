@@ -1,0 +1,6 @@
+@TRPGServer_HostAddress = http://localhost:5119
+
+GET {{TRPGServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
