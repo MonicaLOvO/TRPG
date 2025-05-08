@@ -2,6 +2,7 @@ using TRPGServer.Data;
 using TRPGServer.Functions;
 using TRPGServer.Functions.Interface;
 using Microsoft.EntityFrameworkCore;
+using TRPGServer.Functions.Logic;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,7 @@ builder.Services.AddSingleton<IDIdemo, BetterDIdemo>(); //stay as the same class
 //builder.Services.AddScoped<IDIdemo, DIdemo>();//Singleton per person(example: every new tab will have new variable, same tab/application have same variable)
 builder.Services.AddTransient<ILogicDemo, LogicDemo>(); //everytime call it will be a new class(the secound )
 
+builder.Services.AddTransient<IAccountLogic, AccountLogic>();
 
 //Entity FrameWork
 var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");

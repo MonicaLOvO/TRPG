@@ -2,33 +2,47 @@
 using TRPGServer.Data;
 using TRPGServer.Functions;
 using TRPGServer.Functions.Interface;
+using TRPGServer.Functions.Logic;
+using TRPGServer.Model;
 namespace TRPGServer.Controllers
 {
     [ApiController]
     [Route("[controller]")]
     public class TRPGController : ControllerBase
     {
-        private ILogicDemo service;
-        private readonly ILogger<WeatherForecastController> _logger;
-        private readonly AppDbContext _appDbContext;
+        private IAccountLogic _accountLogic;
+        private readonly ILogger<TRPGController> _logger;
 
-        public TRPGController(ILogger<WeatherForecastController> logger, ILogicDemo _service)
+        public TRPGController(IServiceProvider serviceProvider, ILogger<TRPGController> logger) 
         {
+            _accountLogic = serviceProvider.GetRequiredService<IAccountLogic>();
+            //_accountLogic = accountLogic;
             _logger = logger;
-            service = _service;
         }
 
-        public TRPGController(AppDbContext appDbContext) 
+        [HttpGet("test")]
+        public string ConnectionTest()
         {
-            _appDbContext = appDbContext;
+            return $"Pong";
         }
 
-        [HttpGet(Name = "test")]
-        public string Get()
+        [HttpPost("AddAccount")]
+        public Guid AddAccount([FromBody] AccountModel data)
         {
-            return $"{service.Variable}";
+            return _accountLogic.CreateAccount(data);
         }
 
+        [HttpGet("test/{username}")]
+        public string Get(string username)
+        {
+            return $"Pong";
+        }
+
+        [HttpGet("test/query")]
+        public string TestQuery([FromQuery] string username)
+        {
+            return $"Pong";
+        }
 
     }
 }
