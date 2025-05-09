@@ -9,9 +9,20 @@ namespace TRPGServer.Model.RoomObject
 {
     public class RoomModel
     {
-        public Guid Id { get; set; }
 
-        public AccountModel CreatorAccount { get; set; }
+        public RoomModel() 
+        {
+            RoomActors = [];
+            RoomRules = [];
+            RoomTemplates = [];
+            RoomChat = [];
+            RoomLogs = [];
+            RoomCharacters = [];
+        }
+
+        public Guid? Id { get; set; }
+
+        public AccountModel? CreatorAccount { get; set; }
 
         public RoomActorModel[] RoomActors;
 

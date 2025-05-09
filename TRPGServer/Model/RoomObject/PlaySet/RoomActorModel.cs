@@ -7,13 +7,17 @@ namespace TRPGServer.Model.RoomObject.PlaySet
 {
     public class RoomActorModel
     {
-        public Guid Id { get; set; }
+        public RoomActorModel() {
+            Characters = [];
+            Notes = [];
+        }
+        public Guid? Id { get; set; }
 
-        public RoomModel Room { get; set; }
+        public RoomModel? Room { get; set; }
 
-        public AccountModel Account { get; set; }
+        public AccountModel? Account { get; set; }
 
-        public RoleType Role { get; set; }
+        public RoleType? Role { get; set; }
 
         public RoomCharacterModel[] Characters;
 

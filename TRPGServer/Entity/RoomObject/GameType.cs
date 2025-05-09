@@ -2,7 +2,7 @@
 
 namespace TRPGServer.Entity.RoomObject
 {
-    public class GameType
+    public class GameType : Tracking
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();

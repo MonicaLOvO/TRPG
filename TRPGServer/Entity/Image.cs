@@ -2,7 +2,7 @@
 
 namespace TRPGServer.Entity
 {
-    public class Image
+    public class Image : Tracking
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();

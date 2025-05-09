@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TRPGServer.Data;
 
@@ -11,9 +12,11 @@ using TRPGServer.Data;
 namespace TRPGServer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250509000839_AddSoftDelete")]
+    partial class AddSoftDelete
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,18 +31,18 @@ namespace TRPGServer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("email")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -60,7 +63,7 @@ namespace TRPGServer.Migrations
                     b.Property<Guid>("AccountId")
                         .HasColumnType("char(36)");
 
-                    b.Property<int?>("Age")
+                    b.Property<int>("Age")
                         .HasColumnType("int");
 
                     b.Property<int>("CON")
@@ -69,19 +72,22 @@ namespace TRPGServer.Migrations
                     b.Property<int>("DEX")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("EDU")
                         .HasColumnType("int");
 
                     b.Property<string>("Era")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Gender")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("Hp")
@@ -90,10 +96,10 @@ namespace TRPGServer.Migrations
                     b.Property<int>("INT")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("ImageId")
+                    b.Property<Guid>("ImageId")
                         .HasColumnType("char(36)");
 
-                    b.Property<int?>("LUCK")
+                    b.Property<int>("LUCK")
                         .HasColumnType("int");
 
                     b.Property<int>("MP")
@@ -107,6 +113,7 @@ namespace TRPGServer.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Occupation")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("POW")
@@ -139,13 +146,14 @@ namespace TRPGServer.Migrations
                     b.Property<Guid>("CharacterId")
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<Guid?>("DiceId")
+                    b.Property<Guid>("DiceId")
                         .HasColumnType("char(36)");
 
                     b.Property<string>("ItemName")
@@ -155,7 +163,7 @@ namespace TRPGServer.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Value")
+                    b.Property<int>("Value")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -176,10 +184,11 @@ namespace TRPGServer.Migrations
                     b.Property<Guid>("CharacterId")
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("StatusName")
@@ -205,7 +214,7 @@ namespace TRPGServer.Migrations
                     b.Property<int>("APP")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Age")
+                    b.Property<int>("Age")
                         .HasColumnType("int");
 
                     b.Property<int>("CON")
@@ -214,19 +223,22 @@ namespace TRPGServer.Migrations
                     b.Property<int>("DEX")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("EDU")
                         .HasColumnType("int");
 
                     b.Property<string>("Era")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Gender")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("Hp")
@@ -235,10 +247,10 @@ namespace TRPGServer.Migrations
                     b.Property<int>("INT")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("ImageId")
+                    b.Property<Guid>("ImageId")
                         .HasColumnType("char(36)");
 
-                    b.Property<int?>("LUCK")
+                    b.Property<int>("LUCK")
                         .HasColumnType("int");
 
                     b.Property<int>("MP")
@@ -252,6 +264,7 @@ namespace TRPGServer.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Occupation")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("POW")
@@ -279,26 +292,27 @@ namespace TRPGServer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid?>("CharacterId")
+                    b.Property<Guid>("CharacterId")
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<Guid?>("DiceId")
+                    b.Property<Guid>("DiceId")
                         .HasColumnType("char(36)");
 
                     b.Property<string>("ItemName")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int?>("Quantity")
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Value")
+                    b.Property<int>("Value")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -316,13 +330,14 @@ namespace TRPGServer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid?>("CharacterId")
+                    b.Property<Guid>("CharacterId")
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("StatusName")
@@ -345,7 +360,7 @@ namespace TRPGServer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("ImageBase64")
@@ -369,7 +384,7 @@ namespace TRPGServer.Migrations
                     b.Property<Guid>("ActorId")
                         .HasColumnType("char(36)");
 
-                    b.Property<int?>("Age")
+                    b.Property<int>("Age")
                         .HasColumnType("int");
 
                     b.Property<int>("CON")
@@ -378,19 +393,22 @@ namespace TRPGServer.Migrations
                     b.Property<int>("DEX")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("EDU")
                         .HasColumnType("int");
 
                     b.Property<string>("Era")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("Gender")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("Hp")
@@ -399,10 +417,10 @@ namespace TRPGServer.Migrations
                     b.Property<int>("INT")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("ImageId")
+                    b.Property<Guid>("ImageId")
                         .HasColumnType("char(36)");
 
-                    b.Property<int?>("LUCK")
+                    b.Property<int>("LUCK")
                         .HasColumnType("int");
 
                     b.Property<int>("MP")
@@ -416,6 +434,7 @@ namespace TRPGServer.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("Occupation")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<int>("POW")
@@ -453,13 +472,14 @@ namespace TRPGServer.Migrations
                     b.Property<Guid>("CharacterId")
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<Guid?>("DiceId")
+                    b.Property<Guid>("DiceId")
                         .HasColumnType("char(36)");
 
                     b.Property<string>("ItemName")
@@ -469,7 +489,7 @@ namespace TRPGServer.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Value")
+                    b.Property<int>("Value")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -490,10 +510,11 @@ namespace TRPGServer.Migrations
                     b.Property<Guid>("CharacterId")
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("StatusName")
@@ -516,7 +537,7 @@ namespace TRPGServer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("Side")
@@ -538,7 +559,7 @@ namespace TRPGServer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Type")
@@ -560,12 +581,14 @@ namespace TRPGServer.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Content")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -584,7 +607,7 @@ namespace TRPGServer.Migrations
                     b.Property<Guid>("AccountId")
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("Role")
@@ -609,18 +632,20 @@ namespace TRPGServer.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Content")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("RoomId")
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("Time")
+                    b.Property<DateTime>("Time")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -637,18 +662,20 @@ namespace TRPGServer.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Content")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("RoomId")
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("Time")
+                    b.Property<DateTime>("Time")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
@@ -667,7 +694,7 @@ namespace TRPGServer.Migrations
                     b.Property<Guid>("CreatorId")
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
@@ -684,9 +711,10 @@ namespace TRPGServer.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Content")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("RoomId")
@@ -705,13 +733,14 @@ namespace TRPGServer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("RoomId")
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<bool>("VisiableToPlayer")
@@ -731,15 +760,17 @@ namespace TRPGServer.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Content")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("RoomTemplateId")
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<bool>("VisiableToPlayer")
@@ -758,14 +789,14 @@ namespace TRPGServer.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime?>("DeletedDate")
+                    b.Property<DateTime>("DeletedDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<Guid?>("ImageId")
+                    b.Property<Guid>("ImageId")
                         .HasColumnType("char(36)");
 
                     b.Property<Guid>("RoomId")
@@ -790,7 +821,9 @@ namespace TRPGServer.Migrations
 
                     b.HasOne("TRPGServer.Entity.Image", "Image")
                         .WithMany()
-                        .HasForeignKey("ImageId");
+                        .HasForeignKey("ImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Account");
 
@@ -807,7 +840,9 @@ namespace TRPGServer.Migrations
 
                     b.HasOne("TRPGServer.Entity.RoomObject.Dice", "Dice")
                         .WithMany()
-                        .HasForeignKey("DiceId");
+                        .HasForeignKey("DiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("CharacterBase");
 
@@ -829,7 +864,9 @@ namespace TRPGServer.Migrations
                 {
                     b.HasOne("TRPGServer.Entity.Image", "Image")
                         .WithMany()
-                        .HasForeignKey("ImageId");
+                        .HasForeignKey("ImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Image");
                 });
@@ -838,11 +875,15 @@ namespace TRPGServer.Migrations
                 {
                     b.HasOne("TRPGServer.Entity.Character.CharacterBase", "CharacterBase")
                         .WithMany()
-                        .HasForeignKey("CharacterId");
+                        .HasForeignKey("CharacterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TRPGServer.Entity.RoomObject.Dice", "Dice")
                         .WithMany()
-                        .HasForeignKey("DiceId");
+                        .HasForeignKey("DiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("CharacterBase");
 
@@ -853,7 +894,9 @@ namespace TRPGServer.Migrations
                 {
                     b.HasOne("TRPGServer.Entity.Character.CharacterBase", "CharacterBase")
                         .WithMany()
-                        .HasForeignKey("CharacterId");
+                        .HasForeignKey("CharacterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("CharacterBase");
                 });
@@ -868,7 +911,9 @@ namespace TRPGServer.Migrations
 
                     b.HasOne("TRPGServer.Entity.Image", "Image")
                         .WithMany()
-                        .HasForeignKey("ImageId");
+                        .HasForeignKey("ImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TRPGServer.Entity.RoomObject.Room", "Room")
                         .WithMany()
@@ -893,7 +938,9 @@ namespace TRPGServer.Migrations
 
                     b.HasOne("TRPGServer.Entity.RoomObject.Dice", "Dice")
                         .WithMany()
-                        .HasForeignKey("DiceId");
+                        .HasForeignKey("DiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("CharacterBase");
 
@@ -1022,7 +1069,9 @@ namespace TRPGServer.Migrations
                 {
                     b.HasOne("TRPGServer.Entity.Image", "Image")
                         .WithMany()
-                        .HasForeignKey("ImageId");
+                        .HasForeignKey("ImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("TRPGServer.Entity.RoomObject.Room", "Room")
                         .WithMany()

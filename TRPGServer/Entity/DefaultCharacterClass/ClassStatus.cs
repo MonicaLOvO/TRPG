@@ -4,7 +4,7 @@ using TRPGServer.Entity.Character;
 
 namespace TRPGServer.Entity.Class
 {
-    public class ClassStatus
+    public class ClassStatus : Tracking
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
@@ -14,10 +14,10 @@ namespace TRPGServer.Entity.Class
         [Required]
         public int Value { get; set; } = 0;
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public Guid CharacterId { get; set; }
+        public Guid? CharacterId { get; set; }
         [ForeignKey(nameof(CharacterId))]
-        public CharacterBase CharacterBase { get; set; }
+        public CharacterBase? CharacterBase { get; set; }
     }
 }

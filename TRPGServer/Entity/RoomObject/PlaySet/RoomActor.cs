@@ -4,7 +4,7 @@ using static TRPGServer.Entity.Enum.RoleEnum;
 
 namespace TRPGServer.Entity.RoomObject.PlaySet
 {
-    public class RoomActor
+    public class RoomActor : Tracking
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();

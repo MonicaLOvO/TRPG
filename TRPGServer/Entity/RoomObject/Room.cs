@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TRPGServer.Entity.RoomObject
 {
-    public class Room
+    public class Room : Tracking
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();

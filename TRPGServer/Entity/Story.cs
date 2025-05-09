@@ -5,7 +5,7 @@ using System.Xml.Linq;
 using TRPGServer.Entity.RoomObject;
 namespace TRPGServer.Entity
 {
-    public class Story
+    public class Story : Tracking
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
@@ -16,9 +16,11 @@ namespace TRPGServer.Entity
         [ForeignKey(nameof(RoomId))]
         public Room Room { get; set; }
 
-        public Guid ImageId { get; set; }
+        public Guid? ImageId { get; set; }
         [ForeignKey(nameof(ImageId))]
-        public Image Image { get; set; }
+        public Image? Image { get; set; }
+
+        
 
 
 

@@ -4,14 +4,14 @@ using System.Net.Sockets;
 using System.Xml.Linq;
 namespace TRPGServer.Entity
 {
-    public class Account
+    public class Account : Tracking
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
         [Required]
         public string UserName { get; set; }
         [Required]
-        public string email { get; set; }
+        public string Email { get; set; }
         [Required]
         public string Password { get; set; }
 

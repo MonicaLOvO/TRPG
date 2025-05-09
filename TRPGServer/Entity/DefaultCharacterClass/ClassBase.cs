@@ -3,21 +3,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TRPGServer.Entity.Class
 {
-    public class ClassBase
+    public class ClassBase : Tracking
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
         public string Name { get; set; }
-        public int Age { get; set; }
-        public string Gender { get; set; }
-        public string Description { get; set; }
-        public string Occupation { get; set; }
-        public string Era { get; set; }
-        public Guid ImageId { get; set; }
+        public int? Age { get; set; }
+        public string? Gender { get; set; }
+        public string? Description { get; set; }
+        public string? Occupation { get; set; }
+        public string? Era { get; set; }
+        public Guid? ImageId { get; set; }
         [ForeignKey(nameof(ImageId))]
-        public Image Image { get; set; }
+        public Image? Image { get; set; }
 
         [Required]
         public int STR { get; set; } = 0;
@@ -35,7 +35,7 @@ namespace TRPGServer.Entity.Class
         public int POW { get; set; } = 0;
         [Required]
         public int EDU { get; set; } = 0;
-        public int LUCK { get; set; }
+        public int? LUCK { get; set; }
 
         [Required]
         public int Hp { get; set; } = 0;

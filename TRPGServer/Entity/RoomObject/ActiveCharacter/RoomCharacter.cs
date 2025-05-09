@@ -4,7 +4,7 @@ using TRPGServer.Entity.RoomObject.PlaySet;
 
 namespace TRPGServer.Entity.RoomObject.ActiveCharacter
 {
-    public class RoomCharacter
+    public class RoomCharacter : Tracking
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
@@ -21,14 +21,14 @@ namespace TRPGServer.Entity.RoomObject.ActiveCharacter
 
         [Required]
         public string Name { get; set; }
-        public int Age { get; set; }
-        public string Gender { get; set; }
-        public string Description { get; set; }
-        public string Occupation { get; set; }
-        public string Era { get; set; }
-        public Guid ImageId { get; set; }
+        public int? Age { get; set; }
+        public string? Gender { get; set; }
+        public string? Description { get; set; }
+        public string? Occupation { get; set; }
+        public string? Era { get; set; }
+        public Guid? ImageId { get; set; }
         [ForeignKey(nameof(ImageId))]
-        public Image Image { get; set; }
+        public Image? Image { get; set; }
 
         [Required]
         public int STR { get; set; } = 0;
@@ -46,7 +46,7 @@ namespace TRPGServer.Entity.RoomObject.ActiveCharacter
         public int POW { get; set; } = 0;
         [Required]
         public int EDU { get; set; } = 0;
-        public int LUCK { get; set; }
+        public int? LUCK { get; set; }
 
         [Required]
         public int Hp { get; set; } = 0;

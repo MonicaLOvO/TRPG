@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TRPGServer.Entity.RoomObject.RoomSet
 {
-    public class TemplateDetail
+    public class TemplateDetail : Tracking
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
@@ -16,7 +16,7 @@ namespace TRPGServer.Entity.RoomObject.RoomSet
         [Required]
         public bool VisiableToPlayer { get; set; } = true;
 
-        public string Title { get; set; }
-        public string Content { get; set; }
+        public string? Title { get; set; }
+        public string? Content { get; set; }
     }
 }

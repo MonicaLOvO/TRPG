@@ -48,6 +48,8 @@ namespace TRPGServer.Data
         public DbSet<RoomRule> RoomRule { get; set; }
         public DbSet<RoomTemplate> RoomTemplate { get; set; }
         public DbSet<TemplateDetail> TemplateDetail { get; set; }
+
+
     }
 
 }
