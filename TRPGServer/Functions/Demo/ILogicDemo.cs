@@ -1,4 +1,4 @@
-﻿namespace TRPGServer.Functions.Interface
+﻿namespace TRPGServer.Functions.Demo
 {
     public interface ILogicDemo
     {

@@ -1,7 +1,7 @@
 ﻿using System.Net.Sockets;
 using System.Xml.Linq;
 
-namespace TRPGServer.Functions.Interface
+namespace TRPGServer.Functions.Demo
 {
     public interface IDIdemo
     {

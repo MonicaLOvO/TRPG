@@ -18,10 +18,10 @@ builder.Services.AddSwaggerGen();
 # region Add class to DI
 
 // dependency Inject a logic function call DIdemo(use inject to get the class in blazor)
-builder.Services.AddTransient<IDIdemo, DIdemo>(); //everytime call it will be a new class(the secound )
-builder.Services.AddSingleton<IDIdemo, BetterDIdemo>(); //stay as the same class everytime you call it (the variable will stay the same, every one who use the same server will get same variable)
+//builder.Services.AddTransient<IDIdemo, DIdemo>(); //everytime call it will be a new class(the secound )
+//builder.Services.AddSingleton<IDIdemo, BetterDIdemo>(); //stay as the same class everytime you call it (the variable will stay the same, every one who use the same server will get same variable)
 //builder.Services.AddScoped<IDIdemo, DIdemo>();//Singleton per person(example: every new tab will have new variable, same tab/application have same variable)
-builder.Services.AddTransient<ILogicDemo, LogicDemo>(); //everytime call it will be a new class(the secound )
+//builder.Services.AddTransient<ILogicDemo, LogicDemo>(); //everytime call it will be a new class(the secound )
 builder.Services.AddTransient<IAccountLogic, AccountLogic>();
 
 #endregion

@@ -1,6 +1,4 @@
-﻿using TRPGServer.Functions.Interface;
-
-namespace TRPGServer.Functions
+﻿namespace TRPGServer.Functions.Demo
 {
     public class LogicDemo : ILogicDemo
     {

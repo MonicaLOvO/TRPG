@@ -44,7 +44,7 @@ namespace TRPGServer.Data
         public DbSet<RoomActor> RoomActor { get; set; }
         public DbSet<RoomChat> RoomChat { get; set; }
         public DbSet<RoomLog> RoomLog { get; set; }
-        public DbSet<Dice> Dics { get; set; }
+        public DbSet<Dice> Dice { get; set; }
         public DbSet<RoomRule> RoomRule { get; set; }
         public DbSet<RoomTemplate> RoomTemplate { get; set; }
         public DbSet<TemplateDetail> TemplateDetail { get; set; }
