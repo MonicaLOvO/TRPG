@@ -23,6 +23,12 @@ namespace TRPGServer.Data
                       .HasColumnType("MEDIUMTEXT");
             });
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            options.UseLazyLoadingProxies();
+        }
+
+
 
 
         //public DbSet<Product> Products { get; set; }

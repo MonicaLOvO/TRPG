@@ -10,7 +10,7 @@ namespace TRPGServer.Entity.RoomObject
         [Required]
         public Guid CreatorId { get; set; }
         [ForeignKey(nameof(CreatorId))]
-        public Account Account { get; set; }
+        public virtual Account Account { get; set; }
 
 
 

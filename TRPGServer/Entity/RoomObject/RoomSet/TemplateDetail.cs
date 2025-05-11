@@ -11,7 +11,7 @@ namespace TRPGServer.Entity.RoomObject.RoomSet
         [Required]
         public Guid RoomTemplateId { get; set; }
         [ForeignKey(nameof(RoomTemplateId))]
-        public RoomTemplate RoomTemplate { get; set; }
+        public virtual RoomTemplate RoomTemplate { get; set; }
 
         [Required]
         public bool VisiableToPlayer { get; set; } = true;

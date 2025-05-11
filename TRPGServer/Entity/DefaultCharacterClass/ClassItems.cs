@@ -19,11 +19,11 @@ namespace TRPGServer.Entity.Class
 
         public Guid? DiceId { get; set; }
         [ForeignKey(nameof(DiceId))]
-        public Dice? Dice { get; set; }
+        public virtual Dice? Dice { get; set; }
 
 
         public Guid? CharacterId { get; set; }
         [ForeignKey(nameof(CharacterId))]
-        public CharacterBase? CharacterBase { get; set; }
+        public virtual CharacterBase? CharacterBase { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace TRPGServer.Entity.Class
         public string? Era { get; set; }
         public Guid? ImageId { get; set; }
         [ForeignKey(nameof(ImageId))]
-        public Image? Image { get; set; }
+        public virtual Image? Image { get; set; }
 
         [Required]
         public int STR { get; set; } = 0;

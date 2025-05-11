@@ -17,6 +17,6 @@ namespace TRPGServer.Entity.RoomObject.ActiveCharacter
         [Required]
         public Guid CharacterId { get; set; }
         [ForeignKey(nameof(CharacterId))]
-        public CharacterBase CharacterBase { get; set; }
+        public virtual CharacterBase CharacterBase { get; set; }
     }
 }

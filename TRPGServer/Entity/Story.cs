@@ -14,11 +14,11 @@ namespace TRPGServer.Entity
         [Required]
         public Guid RoomId { get; set; }
         [ForeignKey(nameof(RoomId))]
-        public Room Room { get; set; }
+        public virtual Room Room { get; set; }
 
         public Guid? ImageId { get; set; }
         [ForeignKey(nameof(ImageId))]
-        public Image? Image { get; set; }
+        public virtual Image? Image { get; set; }
 
         
 

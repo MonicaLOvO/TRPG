@@ -12,15 +12,15 @@ namespace TRPGServer.Entity.RoomObject.PlaySet
         [Required]
         public Guid RoomId { get; set; }
         [ForeignKey(nameof(RoomId))]
-        public Room Room { get; set; }
+        public virtual Room Room { get; set; }
 
         [Required]
         public Guid AccountId { get; set; }
         [ForeignKey(nameof(AccountId))]
-        public Account Account { get; set; }
+        public virtual Account Account { get; set; }
 
         [Required]
-        public RoleType Role { get; set; }
+        public virtual RoleType Role { get; set; }
 
         
 

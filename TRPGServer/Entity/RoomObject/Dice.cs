@@ -12,7 +12,7 @@ namespace TRPGServer.Entity.RoomObject
         [Required]
         public Guid TypeId { get; set; }
         [ForeignKey(nameof(TypeId))]
-        public GameType GameType { get; set; }
+        public virtual GameType GameType { get; set; }
 
 
     }

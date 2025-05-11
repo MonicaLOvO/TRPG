@@ -1,7 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using TRPGServer.Entity.RoomObject;
 using TRPGServer.Entity.RoomObject.RoomSet;
+using TRPGServer.Model.Character;
 
 namespace TRPGServer.Entity.Character
 {
@@ -12,7 +14,7 @@ namespace TRPGServer.Entity.Character
         [Required]
         public Guid AccountId { get; set; }
         [ForeignKey(nameof(AccountId))]
-        public Account Account { get; set; }
+        public virtual Account Account { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -23,7 +25,7 @@ namespace TRPGServer.Entity.Character
         public string? Era { get; set; }
         public Guid? ImageId { get; set; }
         [ForeignKey(nameof(ImageId))]
-        public Image? Image { get; set; }
+        public virtual Image? Image { get; set; }
 
         [Required]
         public int STR { get; set; } = 0;
@@ -52,5 +54,15 @@ namespace TRPGServer.Entity.Character
         public int SAN { get; set; } = 0;
         [Required]
         public int Mov { get; set; } = 0;
+
+
+        public virtual ICollection<CharacterItems> Items { get; set; }
+        public virtual ICollection<CharacterStatus> Status { get; set; }
+
+        public CharacterBase()
+        {
+            Items = [];
+            Status = [];
+        }
     }
 }

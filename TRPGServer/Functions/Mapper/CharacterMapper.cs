@@ -16,8 +16,8 @@ namespace TRPGServer.Functions.Mapper
         {
             CharacterBase character = new CharacterBase
             {
-                
-                Account = _context.Account.Find(dto.Account.Id),
+
+                Account = _context.Account.Find(dto.Account.Id) ?? AccountMapper.MapToEntity(dto.Account),
                 Name = dto.Name ?? "",
                 Age = dto.Age,
                 Gender = dto.Gender,
@@ -57,8 +57,7 @@ namespace TRPGServer.Functions.Mapper
         {
             CharacterBaseModel characterModel = new()
             {
-                
-                //Account = character.Account,
+                Account = character.Account == null ? AccountMapper.MapToModel(character.Account): null,
                 //Image = character.Image,
                 Name = character.Name ?? "",
                 Age = character.Age,
@@ -66,9 +65,9 @@ namespace TRPGServer.Functions.Mapper
                 Description = character.Description ?? "",
                 Occupation = character.Occupation,
                 Era = character.Era,
-                
+
                 STR = character.STR,
-                CON = character.CON ,
+                CON = character.CON,
                 SIZ = character.SIZ,
                 DEX = character.DEX,
                 APP = character.APP,
@@ -80,7 +79,7 @@ namespace TRPGServer.Functions.Mapper
                 MP = character.MP,
                 SAN = character.SAN,
                 Mov = character.Mov
-            };
+            }; 
 
             return characterModel;
         }
@@ -89,14 +88,12 @@ namespace TRPGServer.Functions.Mapper
         {
             CharacterStatus entity = new CharacterStatus
             {
-
-                CharacterBase = _context.CharacterBase.Find(dto.CharacterBase.Id),
+                CharacterId = dto.CharacterBase.Id.Value,
                 StatusName = dto.StatusName ?? "",
                 Value = dto.Value ?? 0,
                 Description = dto.Description ?? "",
 
             };
-            entity.CharacterId = dto.CharacterBase.Id ?? entity.CharacterBase.Id;
 
             if (dto.Id != null)
             {

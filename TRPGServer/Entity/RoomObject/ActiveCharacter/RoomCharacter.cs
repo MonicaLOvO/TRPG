@@ -12,12 +12,12 @@ namespace TRPGServer.Entity.RoomObject.ActiveCharacter
         [Required]
         public Guid RoomId { get; set; }
         [ForeignKey(nameof(RoomId))]
-        public Room Room { get; set; }
+        public virtual Room Room { get; set; }
 
         [Required]
         public Guid ActorId { get; set; }
         [ForeignKey(nameof(ActorId))]
-        public RoomActor RoomActor { get; set; }
+        public virtual RoomActor RoomActor { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -28,7 +28,7 @@ namespace TRPGServer.Entity.RoomObject.ActiveCharacter
         public string? Era { get; set; }
         public Guid? ImageId { get; set; }
         [ForeignKey(nameof(ImageId))]
-        public Image? Image { get; set; }
+        public virtual Image? Image { get; set; }
 
         [Required]
         public int STR { get; set; } = 0;

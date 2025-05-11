@@ -12,6 +12,6 @@ namespace TRPGServer.Entity.RoomObject.PlaySet
         [Required]
         public Guid ActorId { get; set; }
         [ForeignKey(nameof(ActorId))]
-        public RoomActor RoomActor { get; set; }
+        public virtual RoomActor RoomActor { get; set; }
     }
 }

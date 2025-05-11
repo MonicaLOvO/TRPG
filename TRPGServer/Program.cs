@@ -3,6 +3,8 @@ using TRPGServer.Functions;
 using TRPGServer.Functions.Interface;
 using Microsoft.EntityFrameworkCore;
 using TRPGServer.Functions.Logic;
+using TRPGServer.Functions.Logic.Character;
+using TRPGServer;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,13 +25,14 @@ builder.Services.AddSwaggerGen();
 //builder.Services.AddScoped<IDIdemo, DIdemo>();//Singleton per person(example: every new tab will have new variable, same tab/application have same variable)
 //builder.Services.AddTransient<ILogicDemo, LogicDemo>(); //everytime call it will be a new class(the secound )
 builder.Services.AddTransient<IAccountLogic, AccountLogic>();
+builder.Services.AddTransient<ICharacterLogic, CharacterLogic>();
 
 #endregion
 
 
 //Entity FrameWork
-var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
-builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+ServerEnv.DbConnectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
+builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(ServerEnv.DbConnectionString, ServerVersion.AutoDetect(ServerEnv.DbConnectionString)));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
