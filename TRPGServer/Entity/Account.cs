@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Net.Sockets;
 using System.Xml.Linq;
+using TRPGServer.Entity.Character;
+using TRPGServer.Model.Character;
 namespace TRPGServer.Entity
 {
     public class Account : Tracking
@@ -14,6 +16,14 @@ namespace TRPGServer.Entity
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }
+
+        public ICollection<CharacterBase> Characters;
+
+        public Account()
+        {
+            Characters = [];
+            
+        }
 
     }
 }

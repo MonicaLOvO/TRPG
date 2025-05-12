@@ -1,5 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TRPGServer.Entity.RoomObject.ActiveCharacter;
+using TRPGServer.Model.RoomObject.ActiveCharacter;
+using TRPGServer.Model.RoomObject.PlaySet;
 using static TRPGServer.Entity.Enum.RoleEnum;
 
 namespace TRPGServer.Entity.RoomObject.PlaySet
@@ -22,7 +25,15 @@ namespace TRPGServer.Entity.RoomObject.PlaySet
         [Required]
         public virtual RoleType Role { get; set; }
 
-        
+        public ICollection<RoomCharacter> Characters;
+
+        public ICollection<Note> Notes;
+
+        public RoomActor()
+        {
+            Characters = [];
+            Notes = [];
+        }
 
     }
 }

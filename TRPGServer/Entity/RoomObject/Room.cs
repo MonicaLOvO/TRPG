@@ -1,5 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TRPGServer.Model.RoomObject.ActiveCharacter;
+using TRPGServer.Model.RoomObject.PlaySet;
+using TRPGServer.Model.RoomObject.RoomSet;
+using TRPGServer.Model;
+using TRPGServer.Entity.RoomObject.PlaySet;
+using TRPGServer.Entity.RoomObject.ActiveCharacter;
+using TRPGServer.Entity.RoomObject.RoomSet;
 
 namespace TRPGServer.Entity.RoomObject
 {
@@ -12,7 +19,26 @@ namespace TRPGServer.Entity.RoomObject
         [ForeignKey(nameof(CreatorId))]
         public virtual Account Account { get; set; }
 
+        public ICollection<RoomActor> Actors;
 
+        public ICollection<RoomRule> Rules;
 
+        public ICollection<RoomTemplate> Templates;
+
+        public ICollection<RoomChat> Chat;
+
+        public ICollection<RoomLog> Logs;
+
+        public ICollection<RoomCharacter> Characters;
+
+        public Room()
+        {
+            Actors = [];
+            Rules = [];
+            Templates = [];
+            Chat = [];
+            Logs = [];
+            Characters = [];
+        }
     }
 }

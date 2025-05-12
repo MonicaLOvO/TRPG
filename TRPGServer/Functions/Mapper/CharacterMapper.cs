@@ -1,4 +1,9 @@
 ﻿
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Drawing;
+using System.Reflection;
+using System.Xml.Linq;
+using System;
 using Microsoft.EntityFrameworkCore;
 using TRPGServer.Data;
 using TRPGServer.Entity;
@@ -12,38 +17,37 @@ namespace TRPGServer.Functions.Mapper
 {
     public class CharacterMapper
     {
-        public static CharacterBase MapToEntity(CharacterBaseModel dto, AppDbContext _context)
+        public static CharacterBase MapToEntity(CharacterBaseModel dto, AppDbContext _context, CharacterBase entity = null)
         {
-            CharacterBase character = new CharacterBase
+            CharacterBase character = new CharacterBase();
+            if (entity != null)
             {
+                character = entity;
+            }
+            //character.Account = _context.Account.Find(dto.Account.Id) ?? AccountMapper.MapToEntity(dto.Account);
+            character.Name = dto.Name ?? "";
+            character.Age = dto.Age;
+            character.Gender = dto.Gender;
+            character.Description = dto.Description ?? "";
+            character.Occupation = dto.Occupation;
+            character.Era = dto.Era;
+            //character.Image = _context.Image.Find(dto.Image.Id);
+            character.STR = dto.STR ?? 0;
+            character.CON = dto.CON ?? 0;
+            character.SIZ = dto.SIZ ?? 0;
+            character.DEX = dto.DEX ?? 0;
+            character.APP = dto.APP ?? 0;
+            character.INT = dto.INT ?? 0;
+            character.POW = dto.POW ?? 0;
+            character.EDU = dto.EDU ?? 0;
+            character.LUCK = dto.LUCK;
+            character.Hp = dto.Hp ?? 0;
+            character.MP = dto.MP ?? 0;
+            character.SAN = dto.SAN ?? 0;
+            character.Mov = dto.Mov ?? 0;
 
-                Account = _context.Account.Find(dto.Account.Id) ?? AccountMapper.MapToEntity(dto.Account),
-                Name = dto.Name ?? "",
-                Age = dto.Age,
-                Gender = dto.Gender,
-                Description = dto.Description ?? "",
-                Occupation = dto.Occupation,
-                Era = dto.Era,
-                Image = _context.Image.Find(dto.Image.Id),
-                STR = dto.STR ?? 0,
-                CON = dto.CON ?? 0,
-                SIZ = dto.SIZ ?? 0,
-                DEX = dto.DEX ?? 0,
-                APP = dto.APP ?? 0,
-                INT = dto.INT ?? 0,
-                POW = dto.POW ?? 0,
-                EDU = dto.EDU ?? 0,
-                LUCK = dto.LUCK,
-                Hp = dto.Hp ?? 0,
-                MP = dto.MP ?? 0,
-                SAN = dto.SAN ?? 0,
-                Mov = dto.Mov ?? 0
-
-
-
-            };
-            character.AccountId = dto.Account.Id ?? character.Account.Id;
-            character.ImageId = dto.Image.Id ?? character.Image.Id;
+            character.AccountId = dto.Account?.Id??Guid.Empty ;
+            character.ImageId = dto.Image?.Id ?? null;
 
             if (dto.Id != null)
             {

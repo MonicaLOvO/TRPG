@@ -25,5 +25,29 @@ namespace TRPGServer.Controllers
         {
             return _characterLogic.GetCharacterById(Id);
         }
+
+        [HttpPost("")]
+        public Guid CreateCharacter([FromBody] CharacterBaseModel data)
+        {
+            return _characterLogic.CreateCharacter(data);
+        }
+
+        [HttpPut("")]
+        public bool UpdateCharacter([FromBody] CharacterBaseModel data)
+        {
+            return _characterLogic.UpdateCharacter(data);
+        }
+
+        [HttpGet("GetAllCharacter")]
+        public List<CharacterBaseModel> GetAllCharacter()
+        {
+            return _characterLogic.GetAllCharacter();
+        }
+
+        [HttpDelete("")]
+        public bool DeleteCharacter(Guid Id)
+        {
+            return _characterLogic.DeleteCharacter(Id);
+        }
     }
 }

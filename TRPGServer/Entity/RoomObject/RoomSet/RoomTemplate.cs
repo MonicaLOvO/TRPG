@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TRPGServer.Model.RoomObject.RoomSet;
 
 namespace TRPGServer.Entity.RoomObject.RoomSet
 {
@@ -16,6 +17,13 @@ namespace TRPGServer.Entity.RoomObject.RoomSet
         public string? Title { get; set; }
         [Required]
         public bool VisiableToPlayer { get; set; } = true;
+
+        public ICollection<TemplateDetail> TemplateDetails;
+
+        public RoomTemplate()
+        {
+            TemplateDetails = [];
+        }
 
     }
 }

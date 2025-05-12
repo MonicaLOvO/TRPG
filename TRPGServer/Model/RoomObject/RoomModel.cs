@@ -12,28 +12,28 @@ namespace TRPGServer.Model.RoomObject
 
         public RoomModel() 
         {
-            RoomActors = [];
-            RoomRules = [];
-            RoomTemplates = [];
-            RoomChat = [];
-            RoomLogs = [];
-            RoomCharacters = [];
+            Actors = [];
+            Rules = [];
+            Templates = [];
+            Chat = [];
+            Logs = [];
+            Characters = [];
         }
 
         public Guid? Id { get; set; }
 
         public AccountModel? CreatorAccount { get; set; }
 
-        public RoomActorModel[] RoomActors;
+        public RoomActorModel[] Actors;
 
-        public RoomRuleModel[] RoomRules;
+        public RoomRuleModel[] Rules;
         
-        public RoomTemplateModel[] RoomTemplates;
+        public RoomTemplateModel[] Templates;
 
-        public RoomChatModel[] RoomChat;
+        public RoomChatModel[] Chat;
 
-        public RoomLogModel[] RoomLogs;
+        public RoomLogModel[] Logs;
 
-        public RoomCharacterModel[] RoomCharacters;
+        public RoomCharacterModel[] Characters;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TRPGServer.Entity.Character;
 
 namespace TRPGServer.Entity.Class
 {
@@ -46,5 +47,14 @@ namespace TRPGServer.Entity.Class
         public int SAN { get; set; } = 0;
         [Required]
         public int Mov { get; set; } = 0;
+
+        public virtual ICollection<ClassItems> Items { get; set; }
+        public virtual ICollection<ClassStatus> Status { get; set; }
+
+        public ClassBase()
+        {
+            Items = [];
+            Status = [];
+        }
     }
 }

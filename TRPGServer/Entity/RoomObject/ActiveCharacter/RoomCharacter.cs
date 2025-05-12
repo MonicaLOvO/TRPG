@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using TRPGServer.Entity.Class;
 using TRPGServer.Entity.RoomObject.PlaySet;
 
 namespace TRPGServer.Entity.RoomObject.ActiveCharacter
@@ -57,5 +58,14 @@ namespace TRPGServer.Entity.RoomObject.ActiveCharacter
         public int SAN { get; set; } = 0;
         [Required]
         public int Mov { get; set; } = 0;
+
+        public virtual ICollection<RoomCharacterItem> Items { get; set; }
+        public virtual ICollection<RoomCharacterStatus> Status { get; set; }
+
+        public RoomCharacter()
+        {
+            Items = [];
+            Status = [];
+        }
     }
 }
