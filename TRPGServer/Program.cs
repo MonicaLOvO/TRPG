@@ -26,6 +26,8 @@ builder.Services.AddSwaggerGen();
 //builder.Services.AddTransient<ILogicDemo, LogicDemo>(); //everytime call it will be a new class(the secound )
 builder.Services.AddTransient<IAccountLogic, AccountLogic>();
 builder.Services.AddTransient<ICharacterLogic, CharacterLogic>();
+builder.Services.AddTransient<IStatusLogic, StatusLogic>();
+builder.Services.AddTransient<IItemLogic, ItemLogic>();
 
 #endregion
 

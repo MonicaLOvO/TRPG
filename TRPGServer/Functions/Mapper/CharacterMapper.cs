@@ -88,23 +88,25 @@ namespace TRPGServer.Functions.Mapper
             return characterModel;
         }
 
-        public static CharacterStatus StatusToEntity(CharacterStatusModel dto, AppDbContext _context)
+        public static CharacterStatus StatusToEntity(CharacterStatusModel dto, AppDbContext _context, CharacterStatus entity = null)
         {
-            CharacterStatus entity = new CharacterStatus
+            CharacterStatus status = new CharacterStatus();
+            if (entity != null)
             {
-                CharacterId = dto.CharacterBase.Id.Value,
-                StatusName = dto.StatusName ?? "",
-                Value = dto.Value ?? 0,
-                Description = dto.Description ?? "",
+                status = entity;
+            }
 
-            };
+            status.CharacterId = dto.CharacterBase.Id.Value;
+            status.StatusName = dto.StatusName ?? "";
+            status.Value = dto.Value ?? 0;
+            status.Description = dto.Description ?? "";
 
             if (dto.Id != null)
             {
-                entity.Id = dto.Id.Value;
+                status.Id = dto.Id.Value;
             }
 
-            return entity;
+            return status;
         }
 
         public static CharacterStatusModel StatusToModel(CharacterStatus entity)
@@ -123,28 +125,30 @@ namespace TRPGServer.Functions.Mapper
 
             return model;
         }
-        public static CharacterItems ItemToEntity(CharacterItemsModel dto, AppDbContext _context)
+        public static CharacterItems ItemToEntity(CharacterItemsModel dto, AppDbContext _context, CharacterItems entity = null)
         {
-            CharacterItems entity = new CharacterItems
+            CharacterItems Item = new CharacterItems();
+            if (entity != null)
             {
+                Item = entity;
+            }
 
-                CharacterBase = _context.CharacterBase.Find(dto.CharacterBase.Id),
-                Dice = _context.Dice.Find(dto.Dice.Id),
-                ItemName = dto.ItemName ?? "",
-                Value = dto.Value ?? 0,
-                Description = dto.Description ?? "",
-                Quantity = dto.Quantity ?? 0,
 
-            };
-            entity.CharacterId = dto.CharacterBase.Id ?? entity.CharacterBase.Id;
-            entity.DiceId = dto.Dice.Id ?? entity.Dice.Id;
+            Item.CharacterId = dto.CharacterBase.Id.Value;
+            Item.DiceId = dto.Dice.Id.Value;
+            Item.Dice = _context.Dice.Find(dto.Dice.Id);
+            Item.ItemName = dto.ItemName ?? "";
+            Item.Value = dto.Value ?? 0;
+            Item.Description = dto.Description ?? "";
+            Item.Quantity = dto.Quantity ?? 0;
+
 
             if (dto.Id != null)
             {
-                entity.Id = dto.Id.Value;
+                Item.Id = dto.Id.Value;
             }
 
-            return entity;
+            return Item;
         }
 
         public static CharacterItemsModel ItemToModel(CharacterItems entity)
