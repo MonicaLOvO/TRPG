@@ -42,10 +42,10 @@ namespace TRPGServer.Controllers
             return _characterLogic.UpdateCharacter(data);
         }
 
-        [HttpGet("GetAllCharacter")]
-        public List<CharacterBaseModel> GetAllCharacter()
+        [HttpGet("GetAllCharacter/{Id}")]
+        public List<CharacterBaseModel> GetAllCharacter(Guid Id)
         {
-            return _characterLogic.GetAllCharacter();
+            return _characterLogic.GetAllCharacterByCreator(Id);
         }
 
         [HttpDelete("")]

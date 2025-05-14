@@ -22,6 +22,8 @@ namespace TRPGServer.Model.RoomObject
 
         public Guid? Id { get; set; }
 
+        public string Name { get; set; }
+
         public AccountModel? CreatorAccount { get; set; }
 
         public RoomActorModel[] Actors;

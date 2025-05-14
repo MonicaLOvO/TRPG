@@ -8,7 +8,7 @@ namespace TRPGServer.Functions.Interface
         DateTime? CheckDeleted(Guid Id);
         Guid CreateCharacter(CharacterBaseModel dto);
         bool DeleteCharacter(Guid Id);
-        List<CharacterBaseModel> GetAllCharacter();
+        List<CharacterBaseModel> GetAllCharacterByCreator(Guid creatorId);
         CharacterBaseModel GetCharacterById(Guid Id);
         bool UpdateCharacter(CharacterBaseModel dto);
     }

@@ -15,8 +15,10 @@ namespace TRPGServer.Entity.RoomObject
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
         [Required]
-        public Guid CreatorId { get; set; }
-        [ForeignKey(nameof(CreatorId))]
+        public Guid AccountId { get; set; }
+        [ForeignKey(nameof(AccountId))]
+        [Required]
+        public string Name { get; set; }
         public virtual Account Account { get; set; }
 
         public ICollection<RoomActor> Actors;

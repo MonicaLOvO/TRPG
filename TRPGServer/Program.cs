@@ -3,8 +3,9 @@ using TRPGServer.Functions;
 using TRPGServer.Functions.Interface;
 using Microsoft.EntityFrameworkCore;
 using TRPGServer.Functions.Logic;
-using TRPGServer.Functions.Logic.Character;
+using TRPGServer.Functions.Logic.CharacterLogicFolder;
 using TRPGServer;
+using TRPGServer.Functions.Logic.RoomLogicFolder;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,7 +29,7 @@ builder.Services.AddTransient<IAccountLogic, AccountLogic>();
 builder.Services.AddTransient<ICharacterLogic, CharacterLogic>();
 builder.Services.AddTransient<IStatusLogic, StatusLogic>();
 builder.Services.AddTransient<IItemLogic, ItemLogic>();
-
+builder.Services.AddTransient<IRoomLogic, RoomLogic>();
 #endregion
 
 

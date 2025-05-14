@@ -3,12 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using TRPGServer.Data;
 using TRPGServer.Entity;
 using TRPGServer.Entity.Character;
+using TRPGServer.Entity.RoomObject;
 using TRPGServer.Functions.Interface;
 using TRPGServer.Functions.Mapper;
 using TRPGServer.Model;
 using TRPGServer.Model.Character;
+using TRPGServer.Model.RoomObject;
 
-namespace TRPGServer.Functions.Logic.Character
+namespace TRPGServer.Functions.Logic.CharacterLogicFolder
 {
     public class CharacterLogic : ICharacterLogic
     {
@@ -34,18 +36,25 @@ namespace TRPGServer.Functions.Logic.Character
             return CharacterMapper.MapToModel(character);
         }
 
-        public List<CharacterBaseModel> GetAllCharacter()
+        public List<CharacterBaseModel> GetAllCharacterByCreator(Guid creatorId)
         {
-            List<CharacterBaseModel> characterModels = [];
 
-            List<CharacterBase> characterList = _context.CharacterBase.Where(a => a.DeletedDate == null).ToList();
+            List<CharacterBaseModel> resultList = [];
 
-            foreach (CharacterBase character in characterList)
+            List<CharacterBase>? selectedList = _context.CharacterBase.Where(a => a.DeletedDate == null && a.AccountId == creatorId).ToList();
+
+
+            if (selectedList == null || selectedList.Count == 0)
             {
-                CharacterBaseModel characterModel = CharacterMapper.MapToModel(character);
-                characterModels.Add(characterModel);
+                return resultList;
             }
-            return characterModels;
+            foreach (var character in selectedList)
+            {
+                CharacterBaseModel result = CharacterMapper.MapToModel(character);
+                resultList.Add(result);
+            }
+
+            return resultList;
         }
 
         public Guid CreateCharacter(CharacterBaseModel dto)

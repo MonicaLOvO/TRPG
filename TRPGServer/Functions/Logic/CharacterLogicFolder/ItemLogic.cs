@@ -5,7 +5,7 @@ using TRPGServer.Functions.Interface;
 using TRPGServer.Functions.Mapper;
 using TRPGServer.Model.Character;
 
-namespace TRPGServer.Functions.Logic.Character
+namespace TRPGServer.Functions.Logic.CharacterLogicFolder
 {
     public class ItemLogic : IItemLogic
     {
@@ -35,7 +35,7 @@ namespace TRPGServer.Functions.Logic.Character
 
             CharacterBase? character = _context.CharacterBase
                 .Include(c => c.Items)
-                .Where(c => c.Id == Id).FirstOrDefault();
+                .Where(c => c.Id == Id && c.DeletedDate == null).FirstOrDefault();
 
             if (character == null)
             {

@@ -8,7 +8,7 @@ using TRPGServer.Functions.Mapper;
 using TRPGServer.Model;
 using TRPGServer.Model.Character;
 
-namespace TRPGServer.Functions.Logic.Character
+namespace TRPGServer.Functions.Logic.CharacterLogicFolder
 {
     public class StatusLogic : IStatusLogic
     {
@@ -38,7 +38,7 @@ namespace TRPGServer.Functions.Logic.Character
 
             CharacterBase? character = _context.CharacterBase
                 .Include(c => c.Status)
-                .Where(c => c.Id == Id).FirstOrDefault();
+                .Where(c => c.Id == Id && c.DeletedDate == null).FirstOrDefault();
 
             if (character == null)
             {
