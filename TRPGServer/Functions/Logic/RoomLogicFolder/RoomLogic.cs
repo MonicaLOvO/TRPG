@@ -33,8 +33,6 @@ namespace TRPGServer.Functions.Logic.RoomLogicFolder
                 return new RoomModel();
             }
 
-            //var temp = room.Items.FirstOrDefault();
-            //return new RoomModel();
             return RoomMapper.MapToModel(room);
         }
 

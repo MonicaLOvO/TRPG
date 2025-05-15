@@ -25,9 +25,9 @@ namespace TRPGServer.Entity.RoomObject.PlaySet
         [Required]
         public virtual RoleType Role { get; set; }
 
-        public ICollection<RoomCharacter> Characters;
+        public virtual ICollection<RoomCharacter> Characters { get; set; }
 
-        public ICollection<Note> Notes;
+        public virtual ICollection<Note> Notes { get; set; }
 
         public RoomActor()
         {

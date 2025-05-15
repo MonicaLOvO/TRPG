@@ -17,7 +17,7 @@ namespace TRPGServer.Entity
         [Required]
         public string Password { get; set; }
 
-        public ICollection<CharacterBase> Characters;
+        public virtual ICollection<CharacterBase> Characters { get; set; }
 
         public Account()
         {

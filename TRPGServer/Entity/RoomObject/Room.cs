@@ -21,17 +21,17 @@ namespace TRPGServer.Entity.RoomObject
         public string Name { get; set; }
         public virtual Account Account { get; set; }
 
-        public ICollection<RoomActor> Actors;
+        public virtual ICollection<RoomActor> Actors { get; set; }
 
-        public ICollection<RoomRule> Rules;
+        public virtual ICollection<RoomRule> Rules { get; set; }
 
-        public ICollection<RoomTemplate> Templates;
+        public virtual ICollection<RoomTemplate> Templates { get; set; }
 
-        public ICollection<RoomChat> Chat;
+        public virtual ICollection<RoomChat> Chat { get; set; }
 
-        public ICollection<RoomLog> Logs;
+        public virtual ICollection<RoomLog> Logs { get; set; }
 
-        public ICollection<RoomCharacter> Characters;
+        public virtual ICollection<RoomCharacter> Characters { get; set; }
 
         public Room()
         {

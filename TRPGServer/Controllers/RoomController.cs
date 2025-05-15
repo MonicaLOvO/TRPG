@@ -10,9 +10,9 @@ namespace TRPGServer.Controllers
     {
 
         private IRoomLogic _roomLogic;
-        private readonly ILogger<CharacterController> _logger;
+        private readonly ILogger<RoomController> _logger;
 
-        public RoomController(IServiceProvider serviceProvider, ILogger<CharacterController> logger)
+        public RoomController(IServiceProvider serviceProvider, ILogger<RoomController> logger)
         {
             _roomLogic = serviceProvider.GetRequiredService<IRoomLogic>();
             _logger = logger;

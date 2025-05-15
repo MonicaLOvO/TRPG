@@ -30,6 +30,7 @@ builder.Services.AddTransient<ICharacterLogic, CharacterLogic>();
 builder.Services.AddTransient<IStatusLogic, StatusLogic>();
 builder.Services.AddTransient<IItemLogic, ItemLogic>();
 builder.Services.AddTransient<IRoomLogic, RoomLogic>();
+builder.Services.AddTransient<IActorLogic, ActorLogic>();
 #endregion
 
 

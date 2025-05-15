@@ -31,8 +31,6 @@ namespace TRPGServer.Functions.Logic.CharacterLogicFolder
                 return new CharacterBaseModel();
             }
 
-            //var temp = character.Items.FirstOrDefault();
-            //return new CharacterBaseModel();
             return CharacterMapper.MapToModel(character);
         }
 

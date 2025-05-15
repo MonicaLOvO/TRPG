@@ -48,7 +48,7 @@ namespace TRPGServer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Account");
+                    b.ToTable("Account", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.Character.CharacterBase", b =>
@@ -130,7 +130,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("ImageId");
 
-                    b.ToTable("CharacterBase");
+                    b.ToTable("CharacterBase", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.Character.CharacterItems", b =>
@@ -167,7 +167,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("DiceId");
 
-                    b.ToTable("CharacterItems");
+                    b.ToTable("CharacterItems", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.Character.CharacterStatus", b =>
@@ -196,7 +196,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("CharacterId");
 
-                    b.ToTable("CharacterStatus");
+                    b.ToTable("CharacterStatus", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.Class.ClassBase", b =>
@@ -273,7 +273,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("ImageId");
 
-                    b.ToTable("ClassBase");
+                    b.ToTable("ClassBase", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.Class.ClassItems", b =>
@@ -315,7 +315,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("DiceId");
 
-                    b.ToTable("ClassItems");
+                    b.ToTable("ClassItems", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.Class.ClassStatus", b =>
@@ -349,7 +349,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("ClassBaseId");
 
-                    b.ToTable("ClassStatus");
+                    b.ToTable("ClassStatus", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.Image", b =>
@@ -367,7 +367,7 @@ namespace TRPGServer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Image");
+                    b.ToTable("Image", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.RoomObject.ActiveCharacter.RoomCharacter", b =>
@@ -454,7 +454,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("RoomCharacter");
+                    b.ToTable("RoomCharacter", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.RoomObject.ActiveCharacter.RoomCharacterItem", b =>
@@ -496,7 +496,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("RoomCharacterId");
 
-                    b.ToTable("RoomCharacterItem");
+                    b.ToTable("RoomCharacterItem", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.RoomObject.ActiveCharacter.RoomCharacterStatus", b =>
@@ -530,7 +530,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("RoomCharacterId");
 
-                    b.ToTable("RoomCharacterStatus");
+                    b.ToTable("RoomCharacterStatus", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.RoomObject.Dice", b =>
@@ -552,7 +552,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("TypeId");
 
-                    b.ToTable("Dice");
+                    b.ToTable("Dice", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.RoomObject.GameType", b =>
@@ -570,7 +570,7 @@ namespace TRPGServer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GameType");
+                    b.ToTable("GameType", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.RoomObject.PlaySet.Note", b =>
@@ -595,7 +595,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("ActorId");
 
-                    b.ToTable("Note");
+                    b.ToTable("Note", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.RoomObject.PlaySet.RoomActor", b =>
@@ -622,7 +622,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("RoomActor");
+                    b.ToTable("RoomActor", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.RoomObject.PlaySet.RoomChat", b =>
@@ -650,7 +650,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("RoomChat");
+                    b.ToTable("RoomChat", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.RoomObject.PlaySet.RoomLog", b =>
@@ -678,7 +678,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("RoomLog");
+                    b.ToTable("RoomLog", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.RoomObject.Room", b =>
@@ -701,7 +701,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("AccountId");
 
-                    b.ToTable("Room");
+                    b.ToTable("Room", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.RoomObject.RoomSet.RoomRule", b =>
@@ -723,7 +723,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("RoomRule");
+                    b.ToTable("RoomRule", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.RoomObject.RoomSet.RoomTemplate", b =>
@@ -748,7 +748,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("RoomTemplate");
+                    b.ToTable("RoomTemplate", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.RoomObject.RoomSet.TemplateDetail", b =>
@@ -776,7 +776,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("RoomTemplateId");
 
-                    b.ToTable("TemplateDetail");
+                    b.ToTable("TemplateDetail", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.Story", b =>
@@ -804,7 +804,7 @@ namespace TRPGServer.Migrations
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("Story");
+                    b.ToTable("Story", (string)null);
                 });
 
             modelBuilder.Entity("TRPGServer.Entity.Character.CharacterBase", b =>

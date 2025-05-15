@@ -18,7 +18,7 @@ namespace TRPGServer.Entity.RoomObject.RoomSet
         [Required]
         public bool VisiableToPlayer { get; set; } = true;
 
-        public ICollection<TemplateDetail> TemplateDetails;
+        public virtual ICollection<TemplateDetail> TemplateDetails { get; set; }
 
         public RoomTemplate()
         {
