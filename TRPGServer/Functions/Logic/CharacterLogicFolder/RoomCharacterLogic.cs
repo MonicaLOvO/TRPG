@@ -24,6 +24,7 @@ namespace TRPGServer.Functions.Logic.CharacterLogicFolder
                 .Include(c => c.Status)
                 .Where(c => c.Id == CharacterId).FirstOrDefault();
 
+            result.SourseId = CharacterId;
             result.Name = sourse.Name ?? "";
             result.Age = sourse.Age;
             result.Gender = sourse.Gender;

@@ -7,8 +7,18 @@ using TRPGServer.Functions.Logic.CharacterLogicFolder;
 using TRPGServer;
 using TRPGServer.Functions.Logic.RoomLogicFolder;
 
-
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      builder =>
+                      {
+                          builder.WithOrigins("http://localhost:3000").AllowAnyHeader()
+                                .AllowAnyMethod() ;
+                      });
+});
 
 // Add services to the container.
 # region Add class to DI
@@ -40,6 +50,9 @@ builder.Services.AddTransient<IRoomCharacterLogic, RoomCharacterLogic>();
 ServerEnv.DbConnectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(ServerEnv.DbConnectionString, ServerVersion.AutoDetect(ServerEnv.DbConnectionString)));
 var app = builder.Build();
+
+// add cors allow
+app.UseCors(MyAllowSpecificOrigins);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

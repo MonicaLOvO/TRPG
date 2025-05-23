@@ -20,6 +20,8 @@ namespace TRPGServer.Entity.RoomObject.ActiveCharacter
         [ForeignKey(nameof(ActorId))]
         public virtual RoomActor RoomActor { get; set; }
 
+        public Guid? SourseId { get; set; }
+
         [Required]
         public string Name { get; set; }
         public int? Age { get; set; }
