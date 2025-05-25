@@ -13,9 +13,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
-                      builder =>
-                      {
-                          builder.WithOrigins("http://localhost:3000").AllowAnyHeader()
+                       policy =>
+                       {
+                           policy.WithOrigins("http://localhost:3000").AllowAnyHeader()
                                 .AllowAnyMethod() ;
                       });
 });
@@ -50,6 +50,7 @@ builder.Services.AddTransient<IRoomCharacterLogic, RoomCharacterLogic>();
 ServerEnv.DbConnectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(ServerEnv.DbConnectionString, ServerVersion.AutoDetect(ServerEnv.DbConnectionString)));
 var app = builder.Build();
+
 
 // add cors allow
 app.UseCors(MyAllowSpecificOrigins);
