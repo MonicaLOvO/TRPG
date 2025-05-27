@@ -21,14 +21,16 @@ namespace TRPGServer.Functions.Logic
 
         public Guid CreateAccount(AccountModel dto)
         {
+
             Account account = new Account();
             bool finalCheck = false;
             finalCheck = CheckData(dto);
-
-            if (finalCheck==false)
+            bool checkRepeat = checkDuplication(dto);
+            if (finalCheck==false || checkRepeat==false)
             {
                 return Guid.Empty;
             }
+
             account = AccountMapper.MapToEntity(dto);
             _context.Account.Add(account);
             _context.SaveChanges();
@@ -123,6 +125,19 @@ namespace TRPGServer.Functions.Logic
         {
             Account? account = _context.Account.Find(Id);
             return account?.DeletedDate;
+        }
+
+        public bool checkDuplication(AccountModel dto) 
+        {
+            bool check = true;
+            Account account = _context.Account.Where(a => a.Email == dto.Email).FirstOrDefault();
+
+            if (account != null) 
+            {
+                check = false;
+            }
+
+            return check;
         }
     }
 }
