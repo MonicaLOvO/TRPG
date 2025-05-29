@@ -49,7 +49,7 @@ namespace TRPGServer.Controllers
             return _accountLogic.GetAllAccount();
         }
 
-        [HttpDelete("")]
+        [HttpDelete("{Id}")]
         public bool DeleteAccount(Guid Id)
         {
             return _accountLogic.DeleteAccount(Id);

@@ -54,7 +54,7 @@ namespace TRPGServer.Controllers
             return _characterLogic.GetAllCharacterByCreator(Id);
         }
 
-        [HttpDelete("")]
+        [HttpDelete("{Id}")]
         public bool DeleteCharacter(Guid Id)
         {
             return _characterLogic.DeleteCharacter(Id);
@@ -81,7 +81,7 @@ namespace TRPGServer.Controllers
         {
             return _statusLogic.GetAllStatusByCharacter(Id);
         }
-        [HttpDelete("Status")]
+        [HttpDelete("Status/{Id}")]
         public bool DeleteStatus(Guid Id)
         {
             return _statusLogic.DeleteStatus(Id);
@@ -108,7 +108,7 @@ namespace TRPGServer.Controllers
         {
             return _itemLogic.GetAllItemsByCharacter(Id);
         }
-        [HttpDelete("Item")]
+        [HttpDelete("Item/{Id}")]
         public bool DeleteItem(Guid Id)
         {
             return _itemLogic.DeleteItem(Id);

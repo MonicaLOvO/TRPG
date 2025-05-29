@@ -42,7 +42,7 @@ namespace TRPGServer.Controllers
             return _roomLogic.GetAllRoomByCreator(Id);
         }
 
-        [HttpDelete("")]
+        [HttpDelete("{Id}")]
         public bool DeleteRoom(Guid Id)
         {
             return _roomLogic.DeleteRoom(Id);

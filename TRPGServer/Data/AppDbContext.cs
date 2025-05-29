@@ -35,6 +35,7 @@ namespace TRPGServer.Data
         public DbSet<GameType> GameType { get; set; }
         public DbSet<Image> Image { get; set; }
         public DbSet<Account> Account { get; set; }
+        public IQueryable<Account> _Account { get => Account.Where(a => a.DeletedDate == null); }
         public DbSet<Room> Room { get; set; }
         public DbSet<Story> Story { get; set; }
         public DbSet<CharacterBase> CharacterBase { get; set; }
@@ -54,8 +55,6 @@ namespace TRPGServer.Data
         public DbSet<RoomRule> RoomRule { get; set; }
         public DbSet<RoomTemplate> RoomTemplate { get; set; }
         public DbSet<TemplateDetail> TemplateDetail { get; set; }
-
-
     }
 
 }

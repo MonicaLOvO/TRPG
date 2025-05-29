@@ -59,7 +59,7 @@ namespace TRPGServer.Functions.Logic
 
         public AccountModel GetAccountById(Guid Id)
         {
-            Account? account = _context.Account.Find(Id);
+            Account? account = _context._Account.Where(a => a.Id == Id).FirstOrDefault();
             if(account == null)
             {
                 return new AccountModel();
@@ -70,7 +70,7 @@ namespace TRPGServer.Functions.Logic
 
         public AccountModel GetAccountByLogin(string email, string password)
         {
-            Account? account = _context.Account.Where(a => a.Email == email && a.DeletedDate == null).FirstOrDefault();
+            Account? account = _context._Account.Where(a => a.Email == email && a.DeletedDate == null).FirstOrDefault();
 
             if (account != null && password == account.Password)
             {
@@ -84,7 +84,7 @@ namespace TRPGServer.Functions.Logic
         {
             List<AccountModel> accountModels = [];
 
-            List<Account> accountList = _context.Account.Where(a => a.DeletedDate == null).ToList();
+            List<Account> accountList = _context._Account.Where(a => a.DeletedDate == null).ToList();
 
             foreach (Account account in accountList) 
             {
@@ -96,7 +96,7 @@ namespace TRPGServer.Functions.Logic
 
         public bool DeleteAccount(Guid Id)
         {
-            Account? account = _context.Account.Find(Id);
+            Account? account = _context._Account.Where(a => a.Id == Id).FirstOrDefault(); 
             if (account == null) 
             {
                 return false;
@@ -123,14 +123,16 @@ namespace TRPGServer.Functions.Logic
 
         public DateTime? CheckDeleted(Guid Id)
         {
-            Account? account = _context.Account.Find(Id);
+            Account? account = _context.Account.Where(a => a.Id == Id).FirstOrDefault();
             return account?.DeletedDate;
         }
 
         public bool checkDuplication(AccountModel dto) 
         {
             bool check = true;
-            Account account = _context.Account.Where(a => a.Email == dto.Email).FirstOrDefault();
+            Account? account = _context._Account
+                .Where(a => a.Email == dto.Email && a.DeletedDate == null)
+                .FirstOrDefault();
 
             if (account != null) 
             {
