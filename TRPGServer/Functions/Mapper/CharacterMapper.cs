@@ -82,8 +82,12 @@ namespace TRPGServer.Functions.Mapper
                 Hp = character.Hp,
                 MP = character.MP,
                 SAN = character.SAN,
-                Mov = character.Mov
-            }; 
+                Mov = character.Mov,
+
+                Id = character.Id
+
+
+            };
 
             return characterModel;
         }
