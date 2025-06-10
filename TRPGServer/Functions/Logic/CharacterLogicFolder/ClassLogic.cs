@@ -50,6 +50,7 @@ namespace TRPGServer.Functions.Logic.CharacterLogicFolder
             result.ImageId = sourse.ImageId;
             _context.ClassBase.Add(result);
             _context.SaveChanges();
+            Thread.Sleep(1000);
 
             foreach (var item in sourse.Items)
             {
@@ -145,7 +146,8 @@ namespace TRPGServer.Functions.Logic.CharacterLogicFolder
                 Quantity = sourse.Quantity,
                 Description = sourse.Description,
                 DiceId = sourse.DiceId,
-                CharacterId = ClassId
+                ClassBaseId = ClassId,
+                
             };
 
 
@@ -161,7 +163,7 @@ namespace TRPGServer.Functions.Logic.CharacterLogicFolder
                 StatusName = sourse.StatusName,
                 Value = sourse.Value,
                 Description = sourse.Description,
-                CharacterId = ClassId
+                ClassBaseId = ClassId
             };
 
 

@@ -16,8 +16,8 @@ namespace TRPGServer.Entity.Class
 
         public string? Description { get; set; }
 
-        public Guid? CharacterId { get; set; }
-        [ForeignKey(nameof(CharacterId))]
-        public virtual CharacterBase? CharacterBase { get; set; }
+        public Guid? ClassBaseId { get; set; }
+        [ForeignKey(nameof(ClassBaseId))]
+        public virtual ClassBase? ClassBase { get; set; }
     }
 }

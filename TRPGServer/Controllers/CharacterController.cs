@@ -126,7 +126,7 @@ namespace TRPGServer.Controllers
             return _classLogic.DuplicateToCharacter(Id);
         }
 
-        [HttpPut("DuplicateToClass")]
+        [HttpPut("DuplicateToRoomCharacter")]
         public Guid DuplicateToRoomCharacter([FromBody] RoomCharacterModel dto)
         {
             return _roomCharacterLogic.DuplicateToRoomCharacter(dto.Id ?? Guid.Empty, dto.Room?.Id ?? Guid.Empty, dto.RoomActor?.Id??Guid.Empty);

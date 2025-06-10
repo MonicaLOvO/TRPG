@@ -146,7 +146,7 @@ namespace TRPGServer.Functions.Logic.CharacterLogicFolder
                 Quantity = sourse.Quantity,
                 Description = sourse.Description,
                 DiceId = sourse.DiceId,
-                CharacterId = ClassId
+                RoomCharacterId = ClassId
             };
 
 
@@ -162,7 +162,7 @@ namespace TRPGServer.Functions.Logic.CharacterLogicFolder
                 StatusName = sourse.StatusName,
                 Value = sourse.Value,
                 Description = sourse.Description,
-                CharacterId = ClassId
+                RoomCharacterId = ClassId
             };
 
 
