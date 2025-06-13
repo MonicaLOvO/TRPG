@@ -29,7 +29,7 @@ namespace TRPGServer.Functions.Mapper
             {
                 Id = room.Id,
                 Name = room.Name,
-                CreatorAccount = room.Account == null ? AccountMapper.MapToModel(room.Account):null,
+                CreatorAccount = AccountMapper.MapToModel(room.Account),
                 
             };
 
