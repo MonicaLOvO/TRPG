@@ -28,8 +28,8 @@ namespace TRPGServer.Functions.Mapper
         {
             RoomActorModel actorModel = new();
             actorModel.Id = actor.Id;
-            actorModel.Room = actor.Room == null ? RoomMapper.MapToModel(actor.Room) : null;
-            actorModel.Account = actor.Account == null ? AccountMapper.MapToModel(actor.Account) : null;
+            actorModel.Room = RoomMapper.MapToModel(actor.Room);
+            actorModel.Account = AccountMapper.MapToModel(actor.Account);
             actorModel.Role = actor.Role;
 
             return actorModel;
