@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TRPGServer.Functions.Interface;
 using TRPGServer.Functions.Logic.RoomLogicFolder;
+using TRPGServer.Model;
 using TRPGServer.Model.RoomObject;
 using TRPGServer.Model.RoomObject.PlaySet;
 
@@ -45,9 +46,12 @@ namespace TRPGServer.Controllers
         }
 
         [HttpGet("SearchRoom/{searchQuery}")]
-        public List<RoomModel> SearchRoom(string searchQuery)
+        public ResultContainer SearchRoom(string searchQuery, [FromQuery] string? page, [FromQuery] string? limit)
         {
-            return _roomLogic.SearchRoom(searchQuery);
+            page = page ?? "1";
+            limit = limit ?? "10";
+
+            return _roomLogic.SearchRoom(searchQuery, page, limit);
         }
 
         [HttpDelete("{Id}")]

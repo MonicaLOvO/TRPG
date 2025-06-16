@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using TRPGServer.Data;
 using TRPGServer.Entity;
@@ -7,6 +8,7 @@ using TRPGServer.Entity.Character;
 using TRPGServer.Entity.RoomObject;
 using TRPGServer.Functions.Interface;
 using TRPGServer.Functions.Mapper;
+using TRPGServer.Model;
 using TRPGServer.Model.Character;
 using TRPGServer.Model.RoomObject;
 
@@ -60,19 +62,36 @@ namespace TRPGServer.Functions.Logic.RoomLogicFolder
             return resultList;
         }
 
-        public List<RoomModel> SearchRoom(string searchQuery) 
+        public ResultContainer SearchRoom(string searchQuery, string page, string limit) 
         {
-            List<Room>? selectedList = _context.Room
-                .Where(i => i.Name== searchQuery)
-                .Where(a => a.DeletedDate == null)
+            string lowerSearch = searchQuery.ToLower();
+
+            int pageInt = Int32.Parse(page);
+            int limitInt = Int32.Parse(limit);
+
+            var query = _context.Room
+                .Where(r => r.DeletedDate == null &&
+                            r.Name != null &&
+                r.Name.ToLower().Contains(lowerSearch));
+                
+            int count = query.Count();
+
+            var selectedList = query.Skip((pageInt - 1) * limitInt)
+                .Take(limitInt)
                 .ToList();
+
             List<RoomModel> resultList = new();
             foreach (var room in selectedList)
             {
                 RoomModel result = RoomMapper.MapToModel(room);
                 resultList.Add(result);
             }
-            return resultList;        
+
+            ResultContainer resultData = new ResultContainer();
+            resultData.data = resultList;
+            resultData.total = count;
+
+            return resultData;
         }
 
         public Guid CreateRoom(RoomModel dto)

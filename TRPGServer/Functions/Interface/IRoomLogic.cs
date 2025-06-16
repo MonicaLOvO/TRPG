@@ -1,4 +1,5 @@
-﻿using TRPGServer.Model.RoomObject;
+﻿using TRPGServer.Model;
+using TRPGServer.Model.RoomObject;
 
 namespace TRPGServer.Functions.Interface
 {
@@ -9,7 +10,7 @@ namespace TRPGServer.Functions.Interface
         Guid CreateRoom(RoomModel dto);
         bool DeleteRoom(Guid Id);
         List<RoomModel> GetAllRoomByCreator(Guid creatorId);
-        List<RoomModel> SearchRoom(string searchQuery);
+        ResultContainer SearchRoom(string searchQuery, string page, string limit);
         RoomModel GetRoomById(Guid Id);
         bool UpdateRoom(RoomModel dto);
     }
