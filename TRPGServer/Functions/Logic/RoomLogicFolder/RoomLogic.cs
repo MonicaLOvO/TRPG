@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.EntityFrameworkCore;
 using TRPGServer.Data;
 using TRPGServer.Entity;
 using TRPGServer.Entity.Character;
@@ -56,6 +58,21 @@ namespace TRPGServer.Functions.Logic.RoomLogicFolder
                 resultList.Add(result);
             }
             return resultList;
+        }
+
+        public List<RoomModel> SearchRoom(string searchQuery) 
+        {
+            List<Room>? selectedList = _context.Room
+                .Where(i => i.Name== searchQuery)
+                .Where(a => a.DeletedDate == null)
+                .ToList();
+            List<RoomModel> resultList = new();
+            foreach (var room in selectedList)
+            {
+                RoomModel result = RoomMapper.MapToModel(room);
+                resultList.Add(result);
+            }
+            return resultList;        
         }
 
         public Guid CreateRoom(RoomModel dto)

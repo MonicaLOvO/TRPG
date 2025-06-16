@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TRPGServer.Functions.Interface;
+using TRPGServer.Functions.Logic.RoomLogicFolder;
 using TRPGServer.Model.RoomObject;
+using TRPGServer.Model.RoomObject.PlaySet;
 
 namespace TRPGServer.Controllers
 {
@@ -40,6 +42,12 @@ namespace TRPGServer.Controllers
         public List<RoomModel> GetAllRoomByCreator(Guid Id)
         {
             return _roomLogic.GetAllRoomByCreator(Id);
+        }
+
+        [HttpGet("SearchRoom/{searchQuery}")]
+        public List<RoomModel> SearchRoom(string searchQuery)
+        {
+            return _roomLogic.SearchRoom(searchQuery);
         }
 
         [HttpDelete("{Id}")]

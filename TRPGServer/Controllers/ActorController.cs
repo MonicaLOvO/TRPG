@@ -42,6 +42,8 @@ namespace TRPGServer.Controllers
             return _actorLogic.GetAllActorByRoom(Id);
         }
 
+
+
         [HttpDelete("{Id}")]
         public bool DeleteActor(Guid Id)
         {

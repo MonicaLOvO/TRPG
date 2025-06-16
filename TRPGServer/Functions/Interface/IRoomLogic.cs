@@ -9,6 +9,7 @@ namespace TRPGServer.Functions.Interface
         Guid CreateRoom(RoomModel dto);
         bool DeleteRoom(Guid Id);
         List<RoomModel> GetAllRoomByCreator(Guid creatorId);
+        List<RoomModel> SearchRoom(string searchQuery);
         RoomModel GetRoomById(Guid Id);
         bool UpdateRoom(RoomModel dto);
     }
