@@ -8,7 +8,7 @@ namespace TRPGServer.Entity
 {
     public class Account : Tracking
     {
-        [Key]
+       [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
         [Required]
         public string UserName { get; set; }
